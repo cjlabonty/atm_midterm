@@ -14,6 +14,10 @@ public class Account {
         this.status = status;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String getLogin() {
         return login;
     }
@@ -40,6 +44,10 @@ public class Account {
 
     public double getBalance() {
         return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
     public String getStatus() {

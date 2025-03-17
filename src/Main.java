@@ -1,20 +1,27 @@
 import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        boolean admin = true;
+        boolean admin = false;
 
         System.out.print("Enter login: ");
         String login = scanner.nextLine();
         System.out.print("Enter Pin code: ");
         String pin = scanner.nextLine();
 
+        if(login.equals("admin") && pin.equals("12345")) {
+            admin = true;
+        }
         Account user = new Account(1, "test", 1234, "john", 1000, "Active");
 
         while (true) {
             if(admin) { // admin
-                System.out.print("\n1----Create New Account\n" +
+                System.out.print("\n--------------------------\n\n" +
+                        "Select From the Following:\n" +
+                        "1----Create New Account\n" +
                         "2----Delete Existing Account\n" +
                         "3----Update Account Information\n" +
                         "4----Search for Account\n" +
@@ -34,7 +41,9 @@ public class Main {
                     case "5": return;
                 }
             } else { // customer
-                System.out.print("\n1----Withdraw Cash\n" +
+                System.out.print("\n--------------------------\n\n" +
+                        "Select From the Following:\n" +
+                        "1----Withdraw Cash\n" +
                         "2----Deposit Cash\n" +
                         "3----Display Balance\n" +
                         "4----Exit\n\n" +
@@ -42,11 +51,11 @@ public class Main {
                 String selection = scanner.nextLine();
 
                 switch (selection) {
-                    case "1": withdraw();
+                    case "1": withdraw(user);
                         break;
-                    case "2": deposit();
+                    case "2": deposit(user);
                         break;
-                    case "3": display();
+                    case "3": display(user);
                         break;
                     case "4": return;
                 }
@@ -60,8 +69,14 @@ public class Main {
 
         System.out.print("\nCreate New Account\nLogin: ");
         String login = scanner.nextLine();
-        System.out.print("Pin Code: ");
-        int pin = Integer.parseInt(scanner.nextLine());
+        int pin = 0;
+        while(pin < 10000) {
+            System.out.print("Pin Code: ");
+            pin = Integer.parseInt(scanner.nextLine());
+            if(pin < 10000) {
+                System.out.println("Pin Must Be at Least 5 Digits");
+            }
+        }
         System.out.print("Holders Name: ");
         String name = scanner.nextLine();
         System.out.print("Starting Balance: ");
@@ -116,8 +131,14 @@ public class Main {
         String newStatus = scanner.nextLine();
         System.out.print("Login: ");
         String newLogin = scanner.nextLine();
-        System.out.print("Pin Code: ");
-        int newPin = Integer.parseInt(scanner.nextLine());
+        int newPin = 0;
+        while(newPin < 10000) {
+            System.out.print("Pin Code: ");
+            newPin = Integer.parseInt(scanner.nextLine());
+            if(newPin < 10000) {
+                System.out.println("Pin Must Be at Least 5 Digits");
+            }
+        }
 
         user.setName(newName);
         user.setStatus(newStatus);
@@ -146,9 +167,45 @@ public class Main {
         System.out.println("Pin Code: " + user.getPin());
     }
 
-    public static void withdraw() {}
+    public static void withdraw(Account account) {
+        Scanner scanner = new Scanner(System.in);
 
-    public static void deposit() {}
+        System.out.print("\nWithdraw Cash\nEnter the withdrawal amount: ");
+        int withdrawal = Integer.parseInt(scanner.nextLine());
 
-    public static void display() {}
+        if(withdrawal <= account.getBalance()) {
+            String currentDate = LocalDate.now().format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+            account.setBalance(account.getBalance() - withdrawal);
+            System.out.println("\nCash Successfully Withdrawn");
+            System.out.println("Account #" + account.getId());
+            System.out.println("Date: " + currentDate);
+            System.out.println("Withdrawn: " + withdrawal);
+            System.out.println("Balance: " + account.getBalance());
+        } else {
+            System.out.println("\nWithdrawal Amount too Large. Transaction Failed");
+        }
+    }
+
+    public static void deposit(Account account) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("\nDeposit Cash\nEnter the cash amount to deposit: ");
+        int deposited = Integer.parseInt(scanner.nextLine());
+
+        String currentDate = LocalDate.now().format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+        account.setBalance(account.getBalance() + deposited);
+        System.out.println("\nCash Successfully Deposited");
+        System.out.println("Account #" + account.getId());
+        System.out.println("Date: " + currentDate);
+        System.out.println("Deposited: " + deposited);
+        System.out.println("Balance: " + account.getBalance());
+    }
+
+    public static void display(Account account) {
+        String currentDate = LocalDate.now().format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+        System.out.print("\nDisplay Balance\n");
+        System.out.println("Account #" + account.getId());
+        System.out.println("Date: " + currentDate);
+        System.out.println("Balance: " + account.getBalance());
+    }
 }
