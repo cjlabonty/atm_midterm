@@ -13,6 +13,7 @@ public class DatabaseService {
     public DatabaseService(Database database) {
         this.database = database;
     }
+
     // Update accounts after customer makes changes
     public void updateDatabase(Account account) {
         int accountNum = account.getID();

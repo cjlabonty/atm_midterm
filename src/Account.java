@@ -18,7 +18,6 @@ public class Account {
     public String getName() { return name; }
     public int getID() { return id; }
     public double getBalance() { return balance; }
-    public void setBalance(double balance) { this.balance = balance; }
 
     public Account withUpdatedBalance(double newBalance) {
         return new Account(this.id, this.login, this.pin, this.name, newBalance, this.status);
