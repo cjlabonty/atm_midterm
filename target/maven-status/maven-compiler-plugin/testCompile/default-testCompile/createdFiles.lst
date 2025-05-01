@@ -1,0 +1,6 @@
+MainTest.class
+TransactionServiceTest.class
+AccountServiceTest.class
+DatabaseTest.class
+DatabaseServiceTest.class
+AccountTest.class

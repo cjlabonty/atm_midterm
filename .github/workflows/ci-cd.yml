@@ -1,0 +1,52 @@
+name: CI/CD Pipeline
+
+# Trigger this workflow on push to the 'main' branch or on pull requests
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            # Step 1: Checkout the code
+            - name: Checkout repository
+              uses: actions/checkout@v2
+
+            # Step 2: Set up Java
+            - name: Set up Java
+              uses: actions/setup-java@v2
+              with:
+                  java-version: '21'
+
+            # Step 3: Install Maven
+            - name: Set up Maven
+              uses: actions/setup-java@v2
+              with:
+                  maven-version: '3.8.1'
+
+            # Step 4: Install dependencies and build the project
+            - name: Build and Test with Maven
+              run: mvn clean install
+
+            # Step 5: Run unit tests
+            - name: Run Unit Tests
+              run: mvn test
+
+            # Step 6: Run Style check
+            - name: Run Checkstyle
+              run: mvn checkstyle:check
+
+            # Step 7: Build Documentation
+            - name: Build Documentation
+              run: mvn javadoc:javadoc
+
+            # Step 8: Notify failure if any step fails
+            - name: Notify failure (optional, on failure)
+              if: failure()
+              run: echo "Build failed! Please check the logs."
