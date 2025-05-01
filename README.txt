@@ -21,7 +21,7 @@ Final Questions:
 2. Class Diagrams are in the submission
 3. My project uses a layered architecture. The three layers are:
     Presentation (Main),
-    Business (Account, AccountService, TransactionServiceTest, AppModule),
+    Business (Account, AccountService, TransactionService, AppModule),
     Database (Database, DatabaseService, IDatabase)
 4. I set up test statements for all the classes with public methods. I used Jacoco for code coverage
 and the latest coverage can be found in target/site/jacoco/index.html which can be opened with:
@@ -65,5 +65,5 @@ And my code coverage is 93%.
     - I added Javadocs comments to every public method and class
     - I created the class documentation with Javadocs using: mvn javadoc:javadoc
     - I set up a build system using a powershell script. This is located at build.ps1 in the root folder
-    -
+    - I set up a CI/CD server using Github Actions which is located in .github/workflows/ci-cd.yml
 

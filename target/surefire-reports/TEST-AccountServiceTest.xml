@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="AccountServiceTest" time="1.952" tests="18" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="AccountServiceTest" time="1.994" tests="18" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\sklac\AppData\Local\Temp\surefire15731179187814492055\surefirebooter-20250430220807300_3.jar C:\Users\sklac\AppData\Local\Temp\surefire15731179187814492055 2025-04-30T22-08-07_196-jvmRun1 surefire-20250430220807300_1tmp surefire_0-20250430220807300_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\sklac\AppData\Local\Temp\surefire18047962334317973176\surefirebooter-20250430224753699_3.jar C:\Users\sklac\AppData\Local\Temp\surefire18047962334317973176 2025-04-30T22-47-53_598-jvmRun1 surefire-20250430224753699_1tmp surefire_0-20250430224753699_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\sklac\Desktop\atm_midterm\target\test-classes;C:\Users\sklac\Desktop\atm_midterm\target\classes;C:\Users\sklac\.m2\repository\com\google\inject\guice\7.0.0\guice-7.0.0.jar;C:\Users\sklac\.m2\repository\jakarta\inject\jakarta.inject-api\2.0.1\jakarta.inject-api-2.0.1.jar;C:\Users\sklac\.m2\repository\aopalliance\aopalliance\1.0\aopalliance-1.0.jar;C:\Users\sklac\.m2\repository\com\google\guava\guava\31.0.1-jre\guava-31.0.1-jre.jar;C:\Users\sklac\.m2\repository\com\google\guava\failureaccess\1.0.1\failureaccess-1.0.1.jar;C:\Users\sklac\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\sklac\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\sklac\.m2\repository\org\checkerframework\checker-qual\3.12.0\checker-qual-3.12.0.jar;C:\Users\sklac\.m2\repository\com\google\errorprone\error_prone_annotations\2.7.1\error_prone_annotations-2.7.1.jar;C:\Users\sklac\.m2\repository\com\google\j2objc\j2objc-annotations\1.3\j2objc-annotations-1.3.jar;C:\Users\sklac\.m2\repository\com\mysql\mysql-connector-j\8.3.0\mysql-connector-j-8.3.0.jar;C:\Users\sklac\.m2\repository\com\google\protobuf\protobuf-java\3.25.1\protobuf-java-3.25.1.jar;C:\Users\sklac\.m2\repository\junit\junit\4.13.1\junit-4.13.1.jar;C:\Users\sklac\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\sklac\.m2\repository\org\mockito\mockito-core\5.17.0\mockito-core-5.17.0.jar;C:\Users\sklac\.m2\repository\net\bytebuddy\byte-buddy\1.15.11\byte-buddy-1.15.11.jar;C:\Users\sklac\.m2\repository\net\bytebuddy\byte-buddy-agent\1.15.11\byte-buddy-agent-1.15.11.jar;C:\Users\sklac\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\sklac\AppData\Local\Temp\surefire15731179187814492055\surefirebooter-20250430220807300_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\sklac\AppData\Local\Temp\surefire18047962334317973176\surefirebooter-20250430224753699_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.6+8-LTS-188"/>
@@ -58,7 +58,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testDeleteNumbersDontMatch" classname="AccountServiceTest" time="1.833">
+  <testcase name="testDeleteNumbersDontMatch" classname="AccountServiceTest" time="1.874">
     <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
 WARNING: A Java agent has been loaded dynamically (C:\Users\sklac\.m2\repository\net\bytebuddy\byte-buddy-agent\1.15.11\byte-buddy-agent-1.15.11.jar)
 WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
@@ -66,21 +66,21 @@ WARNING: If a serviceability tool is not in use, please run with -Djdk.instrumen
 WARNING: Dynamic loading of agents will be disallowed by default in a future release
 ]]></system-err>
   </testcase>
-  <testcase name="testUpdateAccountSuccessful" classname="AccountServiceTest" time="0.006"/>
-  <testcase name="testSearchAccountNotFound" classname="AccountServiceTest" time="0.003"/>
-  <testcase name="testFindAccountSuccessful" classname="AccountServiceTest" time="0.004"/>
-  <testcase name="testTooFewDigits" classname="AccountServiceTest" time="0.004"/>
-  <testcase name="testUpdateAccountNotFound" classname="AccountServiceTest" time="0.003"/>
+  <testcase name="testUpdateAccountSuccessful" classname="AccountServiceTest" time="0.007"/>
+  <testcase name="testSearchAccountNotFound" classname="AccountServiceTest" time="0.004"/>
+  <testcase name="testFindAccountSuccessful" classname="AccountServiceTest" time="0.005"/>
+  <testcase name="testTooFewDigits" classname="AccountServiceTest" time="0.003"/>
+  <testcase name="testUpdateAccountNotFound" classname="AccountServiceTest" time="0.004"/>
   <testcase name="testSearchInvalidAccountNum" classname="AccountServiceTest" time="0.001"/>
   <testcase name="testNegativeBalance" classname="AccountServiceTest" time="0.003"/>
   <testcase name="testDeleteInvalidAccountNum1" classname="AccountServiceTest" time="0.002"/>
   <testcase name="testDeleteInvalidAccountNum2" classname="AccountServiceTest" time="0.003"/>
   <testcase name="testLettersInBalance" classname="AccountServiceTest" time="0.003"/>
   <testcase name="testDeleteAccountDoesntExist" classname="AccountServiceTest" time="0.002"/>
-  <testcase name="testSearchAccountSuccessful" classname="AccountServiceTest" time="0.003"/>
-  <testcase name="testDeleteSuccessful" classname="AccountServiceTest" time="0.004"/>
+  <testcase name="testSearchAccountSuccessful" classname="AccountServiceTest" time="0.004"/>
+  <testcase name="testDeleteSuccessful" classname="AccountServiceTest" time="0.003"/>
   <testcase name="testUpdateInvalidAccountNum" classname="AccountServiceTest" time="0.002"/>
-  <testcase name="testSuccessfulAccount" classname="AccountServiceTest" time="0.002"/>
+  <testcase name="testSuccessfulAccount" classname="AccountServiceTest" time="0.001"/>
   <testcase name="testUpdateAccountInvalidPIN" classname="AccountServiceTest" time="0.003"/>
-  <testcase name="testNonNumbersInPIN" classname="AccountServiceTest" time="0.003"/>
+  <testcase name="testNonNumbersInPIN" classname="AccountServiceTest" time="0.002"/>
 </testsuite>
