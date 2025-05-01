@@ -5,22 +5,36 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Service class responsible for interacting with the database to perform operations on account data.
+ * It provides methods for updating account information within the database.
+ */
 @Singleton
 public class DatabaseService {
     private final Database database;
 
+    /**
+     * Constructor to inject the {@link Database} instance for database interactions.
+     *
+     * @param database an instance of {@link Database} to be used for database operations.
+     */
     @Inject
     public DatabaseService(Database database) {
         this.database = database;
     }
 
-    // Update accounts after customer makes changes
+    /**
+     * A service class that interacts with the database to perform operations on account data.
+     * This class is responsible for updating account information in the database.
+     *
+     * @param account as in the account to be updated
+     */
     public void updateDatabase(Account account) {
         int accountNum = account.getID();
         // Find account in database
         String sql = "SELECT * FROM Accounts WHERE id = ?";
         try (Connection conn = database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, accountNum);
             ResultSet rs = stmt.executeQuery();

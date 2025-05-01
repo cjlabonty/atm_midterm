@@ -1,18 +1,31 @@
 import com.google.inject.Inject;
-
 import java.sql.*;
 import java.util.Scanner;
 
+/**
+ * Service class responsible for handling operations related to user accounts,
+ * such as account creation, deletion, and searching.
+ */
 public class AccountService {
 
     private final IDatabase databaseService;
 
+    /**
+     * Constructs an AccountService object with the specified database service.
+     *
+     * @param databaseService the database service to interact with the database
+     */
     @Inject
     public AccountService(IDatabase databaseService) {
         this.databaseService = databaseService;
     }
 
-    // Create an account
+    /**
+     * Creates a new account by prompting the user for necessary details
+     * such as login, pin, name, starting balance, and status.
+     * Ensures valid pin input and positive balance.
+     * Inserts the account data into the database.
+     */
     public void createAccount() {
         Scanner scanner = new Scanner(System.in);
 
@@ -21,10 +34,10 @@ public class AccountService {
         String login = scanner.nextLine();
         String pin = "";
         // Ensure pin is at least 5 characters
-        while(pin.length() < 5) {
+        while (pin.length() < 5) {
             System.out.print("Pin Code: ");
             pin = scanner.nextLine();
-            if(pin.length() < 5) {
+            if (pin.length() < 5) {
                 System.out.println("Pin Must Be at Least 5 Digits");
             } else if (!pin.matches("\\d+")) {
                 System.out.println("Pin Must Contain Only Numbers");
@@ -51,7 +64,7 @@ public class AccountService {
         // Create the account in SQL
         String sql = "INSERT INTO Accounts (login, pin, name, balance, status) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = databaseService.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
             stmt.setString(1, login);
             stmt.setString(2, pin);
@@ -74,7 +87,11 @@ public class AccountService {
         }
     }
 
-    // Delete an account
+    /**
+     * Deletes an existing account after verifying the account number provided by the user.
+     * Prompts for the account number, verifies its existence in the database,
+     * and asks for confirmation before deleting the account from the database.
+     */
     public void deleteAccount() {
         Scanner scanner = new Scanner(System.in);
 
@@ -91,7 +108,7 @@ public class AccountService {
         // Search for account to delete
         String sql = "SELECT name FROM Accounts WHERE id = ?";
         try (Connection conn = databaseService.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, accountNum);
             ResultSet rs = stmt.executeQuery();
@@ -131,7 +148,11 @@ public class AccountService {
         }
     }
 
-    // Update an account
+    /**
+     * Updates an existing account's details such as name, status, login, and pin.
+     * Prompts the user for the account number, retrieves the account information from the database,
+     * and allows the user to update the account details. The account is updated in the database.
+     */
     public void updateAccount() {
         Scanner scanner = new Scanner(System.in);
 
@@ -147,7 +168,7 @@ public class AccountService {
         // Find account in database
         String sql = "SELECT * FROM Accounts WHERE id = ?";
         try (Connection conn = databaseService.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, accountNum);
             ResultSet rs = stmt.executeQuery();
@@ -167,10 +188,10 @@ public class AccountService {
                 String newLogin = scanner.nextLine();
                 String newPin = "";
                 // Ensure pin is at least 5 characters
-                while(newPin.length() < 5) {
+                while (newPin.length() < 5) {
                     System.out.print("Pin Code: ");
                     newPin = scanner.nextLine();
-                    if(newPin.length() < 5) {
+                    if (newPin.length() < 5) {
                         System.out.println("Pin Must Be at Least 5 Digits");
                     } else if (!newPin.matches("\\d+")) {
                         System.out.println("Pin Must Contain Only Numbers");
@@ -202,7 +223,11 @@ public class AccountService {
         }
     }
 
-    // Search for an account by ID
+    /**
+     * Searches for an account by its account number.
+     * Prompts the user for the account number, retrieves the account information from the database,
+     * and displays the details if the account is found.
+     */
     public void searchAccount() {
         Scanner scanner = new Scanner(System.in);
 
@@ -218,7 +243,7 @@ public class AccountService {
         // Find account in database
         String sql = "SELECT * FROM Accounts WHERE id = ?";
         try (Connection conn = databaseService.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, accountNum);
             ResultSet rs = stmt.executeQuery();
@@ -247,12 +272,20 @@ public class AccountService {
 
     }
 
-    // Update accounts after customer makes changes
+    /**
+     * Searches for an account by login and pin.
+     * Retrieves the account information from the database based on the provided login and pin.
+     * If the account is found, an Account object is created and returned.
+     *
+     * @param login the login of the account
+     * @param pin the pin associated with the account
+     * @return the corresponding Account object, or {@code null} if no account is found.
+     */
     public Account findAccount(String login, String pin) {
         // Find account in database
         String sql = "SELECT * FROM Accounts WHERE login = ? AND pin = ?";
         try (Connection conn = databaseService.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, login);
             stmt.setString(2, pin);
